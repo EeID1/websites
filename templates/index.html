@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home page
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Owned Stocks</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Price/Stock</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in everything %}
+      <tr>
+          <td>{{ i["stock"] }}</td>
+          <td>{{ i["shares"] }}</td>
+          <td>
+              {% if i["quote"] %}
+                  ${{ i["quote"].price }}
+              {% else %}
+                  N/A
+              {% endif %}
+          </td>
+      </tr>
+      {% endfor %}
+  </table>
+{% endblock %}
+}

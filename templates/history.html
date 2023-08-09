@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transaction history
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Stock</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Price/1</th>
+        <th scope="col">Total spent</th>
+        <th scope="col">Time</th>
+        <th scope="col">Type</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction['stock'] }}</td>
+            <td>{{ transaction['shares'] }}</td>
+            <td>${{ transaction['price'] / transaction['shares'] }}</td>
+            <td>${{ transaction['price'] }}</td>
+            <td>{{ transaction['time'] }}</td>
+            <td>{{ transaction['type'] }}</td>
+        </tr>
+        {% endfor %}
+
+{% endblock %}
+
+<style>
+  @media only screen and (min-width: 768px){
+      td{
+        font-size:15px;
+      }
+  }
+</style>
